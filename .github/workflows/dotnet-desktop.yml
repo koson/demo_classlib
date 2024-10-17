@@ -64,16 +64,19 @@ jobs:
       - name: Run MSBuild
         id: run_msbuild
         run: |
-          msbuild .\demo_classlib\CalculatorLibrary.sln  /t:clean /p:Configuration=Debug
-          nuget restore .\demo_classlib\CalculatorLibrary.sln
-          msbuild .\demo_classlib\CalculatorLibrary.sln  /t:build /p:Configuration=Debug
+          msbuild .\CalculatorLibrary\CalculatorLibrary.csproj  /t:clean /p:Configuration=Debug
+          nuget restore .\CalculatorLibrary/CalculatorLibrary.csproj
+          msbuild .\CalculatorLibrary/CalculatorLibrary.csproj  /t:build /p:Configuration=Debug
+
+
+
      
       - name: Setup VSTest and add to PATH
         uses: darenm/Setup-VSTest@v1
         id: setup_vstest
 
-      - name: Test Project Members
+      - name: Test Add
         id: run_vstest
-        working-directory: .\TestProject\\bin\Debug\net6.0
-        run: vstest.console.exe TestProject.dll /Tests:TestProjectMembersCount
+        working-directory: .\CalcLibTest\\bin\Debug\net6.0
+        run: vstest.console.exe CalcLibTest.dll /Tests:TestMethod1
 
