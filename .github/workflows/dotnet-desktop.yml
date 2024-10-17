@@ -64,9 +64,9 @@ jobs:
       - name: Run MSBuild
         id: run_msbuild
         run: |
-          msbuild .\CalculatorLibrary\CalculatorLibrary.sln  /t:clean /p:Configuration=Debug
-          nuget restore .\CalculatorLibrary/CalculatorLibrary.sln
-          msbuild .\CalculatorLibrary/CalculatorLibrary.sln  /t:build /p:Configuration=Debug
+          msbuild .\CalculatorLibrary.sln  /t:clean /p:Configuration=Debug
+          nuget restore .\CalculatorLibrary.sln
+          msbuild .\CalculatorLibrary.sln  /t:build /p:Configuration=Debug
 
 
 
